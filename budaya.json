@@ -1,0 +1,44 @@
+{
+  "situs": {
+    "judul": "Jelajah Budaya NTT",
+    "encoding": "UTF-8",
+    "standar_aksesibilitas": "WCAG AAA"
+  },
+  "nodes": [
+    {
+      "id": "profil",
+      "judul": "Profil Suku Boti",
+      "konten": "Suku Boti adalah salah satu suku di Timor Tengah Selatan...",
+      "media": { "gambar": "boti.jpg", "audio": "bahasa-boti.mp3" }
+    },
+    {
+      "id": "falsafah",
+      "judul": "Falsafah Kampung Bena",
+      "konten": "Kampung Bena memiliki falsafah hidup...",
+      "media": { "gambar": "bena.jpg" }
+    },
+    {
+      "id": "galeri",
+      "judul": "Galeri Motif Tenun",
+      "konten": "Koleksi motif tenun ikat khas NTT...",
+      "media": { "gambar": ["motif1.jpg", "motif2.jpg"] }
+    },
+    {
+      "id": "audio",
+      "judul": "Audio Bahasa Lokal",
+      "konten": "Pelafalan bahasa daerah Boti dan Bena...",
+      "media": { "audio": "bahasa-boti.mp3" }
+    },
+    {
+      "id": "peta",
+      "judul": "Peta Interaktif",
+      "konten": "Peta lokasi Kampung Bena dan Suku Boti...",
+      "media": { "gambar": "peta-ntt.jpg" }
+    }
+  ],
+  "teknologi_ai": {
+    "OCR": "Memindai teks dari foto manuskrip kuno",
+    "NMT": "Menerjemahkan bahasa daerah ke Indonesia/Inggris",
+    "TTS": "Membacakan teks untuk aksesibilitas tunanetra"
+  }
+}

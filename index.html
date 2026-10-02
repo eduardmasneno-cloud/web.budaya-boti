@@ -1,0 +1,1555 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jelajah Budaya NTT</title>
+<style>
+/* ============================================
+   RESET & VARIABEL
+   ============================================ */
+:root {
+  --utama: #1a3a2a;
+  --utama-terang: #2d5c3f;
+  --utama-gelap: #0f2419;
+  --aksen: #d4a017;
+  --aksen-terang: #f4c430;
+  --aksen-gelap: #b8890d;
+  --teks: #0a0a0a;
+  --teks-soft: #4a4a4a;
+  --latar: #fdfdf8;
+  --latar-soft: #f4f4ec;
+  --putih: #ffffff;
+  --danger: #d32f2f;
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.12);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.16);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+  --transisi: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--teks);
+  background: var(--latar);
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(212,160,23,0.06) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(26,58,42,0.06) 0%, transparent 40%);
+  background-attachment: fixed;
+  transition: background 0.4s, color 0.4s;
+}
+
+/* Scrollbar Custom */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--latar-soft); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--utama), var(--utama-terang));
+  border-radius: var(--radius-pill);
+}
+::-webkit-scrollbar-thumb:hover { background: var(--aksen); }
+
+/* Skip Link */
+.skip-link {
+  position: absolute;
+  top: -60px;
+  left: 0;
+  background: var(--utama);
+  color: #fff;
+  padding: 12px 24px;
+  z-index: 1000;
+  text-decoration: none;
+  border-radius: 0 0 var(--radius-sm) 0;
+  transition: top 0.3s;
+}
+.skip-link:focus { top: 0; }
+
+a { color: #003d99; text-decoration: underline; }
+a:focus {
+  outline: 3px solid var(--aksen);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ============================================
+   HEADER — MODERN
+   ============================================ */
+header {
+  background: linear-gradient(135deg, var(--utama-gelap) 0%, var(--utama) 50%, var(--utama-terang) 100%);
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+  backdrop-filter: blur(10px);
+}
+
+header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--aksen), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.logo {
+  font-size: 1.6rem;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  transition: var(--transisi);
+  animation: floatLogo 3s ease-in-out infinite;
+}
+
+@keyframes floatLogo {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.logo:hover {
+  transform: scale(1.05);
+  text-shadow: 0 4px 16px rgba(212,160,23,0.5);
+}
+
+.btn-home {
+  background: linear-gradient(135deg, var(--aksen-terang) 0%, var(--aksen) 100%);
+  color: var(--utama-gelap);
+  padding: 10px 22px;
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 14px rgba(212,160,23,0.4);
+  transition: var(--transisi);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-home::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255,255,255,0.4);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.5s, height 0.5s;
+}
+
+.btn-home:hover::before { width: 300px; height: 300px; }
+.btn-home:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 24px rgba(212,160,23,0.6);
+}
+.btn-home:active { transform: translateY(-1px) scale(0.98); }
+
+.btn-dark, .btn-hamburger {
+  background: rgba(255,255,255,0.15);
+  border: 2px solid rgba(255,255,255,0.3);
+  color: #fff;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.2rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transisi);
+  backdrop-filter: blur(10px);
+}
+
+.btn-dark:hover {
+  background: var(--aksen);
+  border-color: var(--aksen);
+  transform: rotate(20deg) scale(1.1);
+}
+
+.btn-hamburger {
+  display: none;
+  border-radius: var(--radius-sm);
+  font-size: 1.4rem;
+}
+
+.btn-hamburger:hover {
+  background: var(--aksen);
+  color: var(--utama-gelap);
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.nav-menu a {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 18px;
+  border-radius: var(--radius-pill);
+  font-weight: 500;
+  font-size: 0.95rem;
+  position: relative;
+  transition: var(--transisi);
+  overflow: hidden;
+}
+
+.nav-menu a::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--aksen), var(--aksen-terang));
+  border-radius: var(--radius-pill);
+  opacity: 0;
+  transform: scale(0.8);
+  transition: var(--transisi);
+  z-index: -1;
+}
+
+.nav-menu a:hover::before,
+.nav-menu a:focus::before { opacity: 1; transform: scale(1); }
+.nav-menu a:hover, .nav-menu a:focus {
+  color: var(--utama-gelap);
+  transform: translateY(-2px);
+}
+
+/* BREADCRUMB */
+.breadcrumb {
+  background: rgba(255,255,255,0.95);
+  padding: 0.75rem 2rem;
+  border-bottom: 1px solid rgba(26,58,42,0.1);
+}
+
+.breadcrumb ol {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.breadcrumb li {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.95rem;
+}
+
+.breadcrumb li + li::before {
+  content: "›";
+  margin: 0 0.5rem;
+  color: var(--utama);
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.breadcrumb a {
+  color: var(--utama);
+  text-decoration: none;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  transition: var(--transisi);
+  font-weight: 500;
+}
+
+.breadcrumb a:hover {
+  background: var(--aksen);
+  color: var(--utama-gelap);
+  transform: translateX(2px);
+}
+
+/* ============================================
+   KONTEN
+   ============================================ */
+main {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.node { display: none; animation: slideUp 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+.node.active { display: block; }
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  color: var(--utama);
+  position: relative;
+  padding-bottom: 0.75rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--aksen), var(--aksen-terang));
+  border-radius: var(--radius-pill);
+  animation: expandLine 0.8s ease-out;
+}
+
+@keyframes expandLine {
+  from { width: 0; }
+  to { width: 80px; }
+}
+
+h3 {
+  color: var(--utama);
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+p { margin-bottom: 1rem; color: var(--teks-soft); }
+
+/* CARD GRID */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+  margin-top: 2rem;
+}
+
+.card {
+  background: var(--putih);
+  border: 2px solid transparent;
+  border-radius: var(--radius-lg);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+  text-decoration: none;
+  color: var(--utama);
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transisi);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--utama), var(--utama-terang));
+  opacity: 0;
+  transition: var(--transisi);
+  z-index: 0;
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(212,160,23,0.3), transparent 70%);
+  border-radius: 50%;
+  opacity: 0;
+  transition: var(--transisi);
+}
+
+.card:hover::after, .card:focus::after {
+  opacity: 1;
+  transform: scale(1.2);
+}
+
+.card > * { position: relative; z-index: 1; }
+
+.card:hover, .card:focus {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: var(--shadow-lg);
+  color: #fff;
+  border-color: var(--aksen);
+}
+
+.card:hover::before, .card:focus::before { opacity: 1; }
+
+/* GALERI */
+.galeri-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+figure {
+  background: var(--putih);
+  border-radius: var(--radius-md);
+  padding: 0.75rem;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transisi);
+  overflow: hidden;
+}
+
+figure:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+}
+
+figure img {
+  width: 100%;
+  border-radius: var(--radius-sm);
+  transition: var(--transisi);
+  display: block;
+}
+
+figure:hover img { transform: scale(1.05); }
+
+figcaption {
+  text-align: center;
+  margin-top: 0.75rem;
+  font-style: italic;
+  color: var(--utama);
+  font-weight: 500;
+}
+
+.node img:not(figure img) {
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  transition: var(--transisi);
+  margin-right: 0.5rem;
+}
+
+.node img:not(figure img):hover {
+  transform: scale(1.03) translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* TOMBOL TTS */
+.btn-tts {
+  background: linear-gradient(135deg, var(--aksen-terang) 0%, var(--aksen) 100%);
+  border: none;
+  padding: 14px 28px;
+  border-radius: var(--radius-pill);
+  font-size: 1.05rem;
+  cursor: pointer;
+  margin-top: 1.5rem;
+  font-weight: 700;
+  color: var(--utama-gelap);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 6px 20px rgba(212,160,23,0.4);
+  transition: var(--transisi);
+  position: relative;
+  overflow: hidden;
+  font-family: inherit;
+}
+
+.btn-tts::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  transition: left 0.6s;
+}
+
+.btn-tts:hover::before { left: 100%; }
+.btn-tts:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 10px 30px rgba(212,160,23,0.6);
+}
+.btn-tts:active { transform: translateY(-1px) scale(0.98); }
+
+.btn-tts.sedang-bicara {
+  background: linear-gradient(135deg, var(--danger) 0%, #b71c1c 100%) !important;
+  color: #fff !important;
+  animation: pulseStop 1.2s infinite;
+  box-shadow: 0 6px 20px rgba(211,47,47,0.5);
+}
+
+@keyframes pulseStop {
+  0%, 100% { transform: scale(1); box-shadow: 0 6px 20px rgba(211,47,47,0.5); }
+  50% { transform: scale(1.05); box-shadow: 0 10px 30px rgba(211,47,47,0.8); }
+}
+
+/* AUDIO */
+audio {
+  width: 100%;
+  margin-top: 1rem;
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-sm);
+}
+
+/* SITEMAP */
+.sitemap {
+  background: linear-gradient(135deg, rgba(26,58,42,0.05), rgba(212,160,23,0.05));
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  margin-top: 3rem;
+  border-top: 3px solid var(--aksen);
+  border-bottom: 3px solid var(--aksen);
+}
+
+.sitemap h3 {
+  color: var(--utama);
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.sitemap ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.sitemap a {
+  color: var(--utama);
+  text-decoration: none;
+  padding: 8px 18px;
+  background: var(--putih);
+  border-radius: var(--radius-pill);
+  font-weight: 500;
+  font-size: 0.95rem;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transisi);
+}
+
+.sitemap a:hover {
+  background: linear-gradient(135deg, var(--utama), var(--utama-terang));
+  color: #fff;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: var(--shadow-md);
+}
+
+/* FOOTER */
+footer {
+  background: linear-gradient(135deg, var(--utama-gelap) 0%, var(--utama) 100%);
+  color: #fff;
+  text-align: center;
+  padding: 2rem;
+  margin-top: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--aksen), transparent);
+}
+
+footer p { color: rgba(255,255,255,0.9); font-size: 0.95rem; margin: 0; }
+
+#peta-container svg {
+  display: block;
+  margin: 0 auto;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+}
+
+/* ============================================
+   DARK MODE
+   ============================================ */
+body.dark-mode {
+  --teks: #e8e8e8;
+  --teks-soft: #b8b8b8;
+  --latar: #0f1a12;
+  --latar-soft: #1a2a1e;
+  --putih: #1e2e22;
+  background: #0f1a12;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(212,160,23,0.08) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(45,92,63,0.15) 0%, transparent 40%);
+}
+
+body.dark-mode header {
+  background: linear-gradient(135deg, #0a1a0f 0%, #142a1a 50%, #1e3a25 100%);
+}
+
+body.dark-mode .breadcrumb {
+  background: rgba(30, 46, 34, 0.95);
+  border-bottom-color: rgba(212,160,23,0.15);
+}
+
+body.dark-mode .card,
+body.dark-mode figure,
+body.dark-mode .sitemap a {
+  background: var(--putih);
+  color: var(--teks);
+}
+
+body.dark-mode .sitemap {
+  background: linear-gradient(135deg, rgba(26,58,42,0.4), rgba(212,160,23,0.08));
+}
+
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode figcaption {
+  color: var(--aksen-terang);
+}
+
+body.dark-mode a { color: var(--aksen-terang); }
+body.dark-mode .breadcrumb a { color: var(--aksen-terang); }
+
+/* MOBILE MENU */
+@media (max-width: 768px) {
+  .btn-hamburger { display: inline-flex; }
+  
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background: linear-gradient(180deg, var(--utama-gelap), var(--utama));
+    flex-direction: column;
+    padding: 5rem 1.5rem 2rem;
+    gap: 0.5rem;
+    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -8px 0 30px rgba(0,0,0,0.4);
+    z-index: 200;
+    overflow-y: auto;
+  }
+  
+  .nav-menu.open { right: 0; }
+  
+  .nav-menu a {
+    padding: 14px 20px;
+    font-size: 1rem;
+    border-radius: var(--radius-sm);
+    width: 100%;
+    text-align: left;
+  }
+  
+  .menu-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transisi);
+    z-index: 150;
+  }
+  
+  .menu-overlay.active { opacity: 1; visibility: visible; }
+}
+
+/* PARTICLE CANVAS */
+#particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+main, header, footer, .sitemap, .breadcrumb {
+  position: relative;
+  z-index: 1;
+}
+
+/* BACK TO TOP */
+#backToTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--aksen), var(--aksen-terang));
+  color: var(--utama-gelap);
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 6px 24px rgba(212,160,23,0.5);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(30px) scale(0.8);
+  transition: var(--transisi);
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#backToTop.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+#backToTop:hover {
+  transform: translateY(-5px) scale(1.1) rotate(-10deg);
+  box-shadow: 0 10px 32px rgba(212,160,23,0.7);
+}
+
+/* SCROLL PROGRESS */
+#progressBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--aksen), var(--aksen-terang), var(--aksen));
+  background-size: 200% 100%;
+  animation: progressShimmer 2s linear infinite;
+  z-index: 9999;
+  transition: width 0.1s linear;
+  box-shadow: 0 0 12px rgba(212,160,23,0.8);
+}
+
+@keyframes progressShimmer {
+  0% { background-position: 0% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* LOADING SCREEN */
+#loader {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(135deg, var(--utama-gelap), var(--utama));
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  transition: opacity 0.6s, visibility 0.6s;
+}
+
+#loader.hidden { opacity: 0; visibility: hidden; }
+
+.loader-logo {
+  font-size: 3rem;
+  animation: loaderFloat 1.5s ease-in-out infinite;
+}
+
+@keyframes loaderFloat {
+  0%, 100% { transform: translateY(0) rotate(-5deg); }
+  50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+.loader-text {
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  animation: loaderPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes loaderPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.loader-bar {
+  width: 200px;
+  height: 4px;
+  background: rgba(255,255,255,0.2);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+  position: relative;
+}
+
+.loader-bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, var(--aksen-terang), transparent);
+  animation: loaderBar 1.2s linear infinite;
+}
+
+@keyframes loaderBar {
+  0% { left: -50%; }
+  100% { left: 100%; }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  body { font-size: 16px; }
+  
+  .header-inner {
+    padding: 0.75rem 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .logo { font-size: 1.2rem; }
+  .btn-home { padding: 8px 18px; font-size: 0.85rem; }
+  
+  h2 { font-size: 1.6rem; }
+  h3 { font-size: 1.1rem; }
+  
+  .breadcrumb { padding: 0.5rem 1rem; }
+  
+  .card-grid { grid-template-columns: 1fr 1fr; }
+  .card { padding: 1.5rem 1rem; font-size: 1rem; }
+  
+  .galeri-grid { grid-template-columns: 1fr; }
+  
+  .node img:not(figure img) { width: 100% !important; margin-bottom: 1rem; }
+  
+  .btn-tts { padding: 12px 22px; font-size: 0.95rem; }
+  
+  .sitemap { padding: 1.25rem; }
+  .sitemap a { padding: 6px 14px; font-size: 0.85rem; }
+  
+  #backToTop { bottom: 20px; right: 20px; width: 48px; height: 48px; font-size: 1.2rem; }
+}
+
+@media (max-width: 480px) {
+  .card-grid { grid-template-columns: 1fr; }
+}
+
+/* ============================================
+   LAPORAN PDF
+   ============================================ */
+.laporan-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1.25rem 0;
+}
+
+.btn-laporan {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, var(--aksen-terang) 0%, var(--aksen) 100%);
+  color: var(--utama-gelap) !important;
+  text-decoration: none !important;
+  padding: 12px 20px;
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  box-shadow: 0 4px 14px rgba(212,160,23,0.35);
+  transition: var(--transisi);
+}
+
+.btn-laporan:hover,
+.btn-laporan:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(212,160,23,0.45);
+}
+
+.btn-laporan-outline {
+  background: var(--putih);
+  color: var(--utama) !important;
+  border: 2px solid var(--utama);
+  box-shadow: none;
+}
+
+.btn-laporan-outline:hover,
+.btn-laporan-outline:focus {
+  background: var(--utama);
+  color: #fff !important;
+}
+
+.pdf-viewer {
+  width: 100%;
+  height: min(78vh, 900px);
+  min-height: 600px;
+  margin-top: 1.25rem;
+  background: #e9e9e9;
+  border: 2px solid rgba(26,58,42,0.15);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.pdf-viewer iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #fff;
+}
+
+.pdf-fallback {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  color: var(--teks-soft);
+}
+
+@media (max-width: 700px) {
+  .pdf-viewer {
+    min-height: 500px;
+    height: 70vh;
+  }
+
+  .laporan-actions {
+    flex-direction: column;
+  }
+
+  .btn-laporan {
+    width: 100%;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<a href="#konten-utama" class="skip-link">Lewati ke konten utama</a>
+
+<canvas id="particles"></canvas>
+<div id="progressBar"></div>
+
+<div id="loader">
+  <div class="loader-logo">🌿</div>
+  <div class="loader-text">JELAJAH BUDAYA NTT</div>
+  <div class="loader-bar"></div>
+</div>
+
+<header>
+  <div class="header-inner">
+    <h1 class="logo">🌿 Jelajah Budaya NTT</h1>
+    <a href="#beranda" class="btn-home">🏠 Home</a>
+    <button class="btn-dark" id="btnDark" title="Ganti Tema" aria-label="Ganti Tema">🌙</button>
+    <button class="btn-hamburger" id="btnHamburger" title="Menu" aria-label="Menu">☰</button>
+    <nav>
+      <ul class="nav-menu" id="navMenu">
+        <li><a href="#profil">Profil</a></li>
+        <li><a href="#falsafah">Falsafah</a></li>
+        <li><a href="#galeri">Galeri Motif</a></li>
+        <li><a href="#audio">Audio Bahasa</a></li>
+        <li><a href="#peta">Peta Interaktif</a></li>
+        <li><a href="#laporan">Laporan</a></li>
+      </ul>
+    </nav>
+  </div>
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <ol id="breadcrumb-list">
+      <li><a href="#beranda">Beranda</a></li>
+    </ol>
+  </nav>
+</header>
+
+<div class="menu-overlay" id="menuOverlay"></div>
+
+<main id="konten-utama">
+
+  <section id="beranda" class="node active">
+    <h2>Selamat Datang di Jelajah Budaya NTT</h2>
+    <p>Situs edukasi interaktif untuk mengenal kebudayaan lokal Nusa Tenggara Timur.</p>
+    <div class="card-grid">
+      <a href="#profil" class="card"><span style="font-size:2.5rem;">👤</span><span>Profil Suku Boti</span></a>
+      <a href="#falsafah" class="card"><span style="font-size:2.5rem;">📜</span><span>Falsafah Suku Boti</span></a>
+      <a href="#galeri" class="card"><span style="font-size:2.5rem;">🎨</span><span>Galeri Motif Tenun</span></a>
+      <a href="#audio" class="card"><span style="font-size:2.5rem;">🔊</span><span>Audio Bahasa Lokal</span></a>
+      <a href="#peta" class="card"><span style="font-size:2.5rem;">🗺️</span><span>Peta Interaktif</span></a>
+      <a href="#laporan" class="card">
+        <span style="font-size:2.5rem;">📄</span>
+        <span>Laporan Budaya Suku Boti</span>
+        <small style="font-weight:400;font-size:.85rem;">Buka laporan PDF</small>
+      </a>
+    </div>
+  </section>
+
+  <section id="profil" class="node">
+    <h2>Profil Suku Boti</h2>
+    <p>Selamat datang di halaman <strong>Profil Suku Boti</strong> — salah satu suku paling otentik di Pulau Timor, Nusa Tenggara Timur.</p>
+    <p>Suku Boti tinggal di Desa Boti, Kecamatan Kie, Kabupaten Timor Tengah Selatan. Desa ini dijuluki <em>"Desa Adat Terakhir di Timor"</em> karena masih memegang teguh tradisi leluhur sejak ratusan tahun silam.</p>
+
+    <h3>🏛️ Sistem Pemerintahan</h3>
+    <p>Boti dipimpin oleh dua tokoh utama:</p>
+    <ul style="margin-left:1.5rem;margin-bottom:1rem;">
+      <li><strong>Usif</strong> — raja adat yang mengatur pemerintahan dan kehidupan sosial</li>
+      <li><strong>Am Tuan</strong> — pemimpin spiritual yang menjaga hubungan dengan leluhur</li>
+    </ul>
+
+    <h3>🌾 Kehidupan Sehari-hari</h3>
+    <p>Masyarakat Boti hidup dari bertani, beternak, dan menenun. Mereka menolak listrik, pupuk kimia, dan modernisasi yang bertentangan dengan <em>halaika</em> (aturan adat).</p>
+
+    <h3>🎨 Kain Tenun Ikat</h3>
+    <p>Kain tenun ikat Boti dibuat secara tradisional dengan pewarna alami dari akar, daun, dan kulit kayu. Motifnya sarat makna filosofis — menggambarkan hubungan manusia dengan alam dan leluhur.</p>
+
+    <h3>🏠 Rumah Adat</h3>
+    <p>Rumah tradisional Boti bernama <em>ume kbubu</em> — berbentuk bulat, tanpa jendela, beratap alang-alang, dan berfungsi sebagai tempat tinggal sekaligus tempat ritual.</p>
+
+    <p>Melalui halaman ini, kita diajak mengenal dan menghargai kearifan lokal Suku Boti — warisan budaya yang harus dijaga bersama. 🌿</p>
+
+    <img src="Profil Suku Boti.jpg" alt="Rumah adat Suku Boti" style="width:32%;border-radius:8px;margin-top:1rem;">
+    <img src="images (5).jpg" alt="Rumah adat Suku Boti" style="width:32%;border-radius:8px;margin-top:2rem;">
+    <img src="images (3).jpg" alt="Rumah adat Suku Boti" style="width:32%;border-radius:8px;margin-top:2rem;">
+
+    <button class="btn-tts" data-teks="Selamat datang di halaman Profil Suku Boti, salah satu suku paling otentik di Pulau Timor, Nusa Tenggara Timur. Suku Boti tinggal di Desa Boti, Kecamatan Kie, Kabupaten Timor Tengah Selatan. Desa ini dijuluki Desa Adat Terakhir di Timor karena masih memegang teguh tradisi leluhur sejak ratusan tahun silam. Boti dipimpin oleh dua tokoh utama: Usif sebagai raja adat, dan Am Tuan sebagai pemimpin spiritual. Masyarakat Boti hidup dari bertani, beternak, dan menenun. Mereka menolak listrik, pupuk kimia, dan modernisasi yang bertentangan dengan halaika, aturan adat. Kain tenun ikat Boti dibuat secara tradisional dengan pewarna alami. Rumah tradisional Boti bernama ume kbubu, berbentuk bulat tanpa jendela dan beratap alang-alang.">🔊 Bacakan</button>
+  </section>
+
+  <section id="falsafah" class="node">
+    <h2>Falsafah Suku Boti</h2>
+    <p>Setiap suku memiliki falsafah hidup yang menjadi pedoman. Bagi <strong>Suku Boti</strong>, pedoman itu bernama <strong><em>Halaika</em></strong> — aturan adat yang diwariskan turun-temurun sejak ratusan tahun silam.</p>
+
+    <h3>🌿 Apa Itu Halaika?</h3>
+    <p>Halaika adalah <strong>hukum adat tertinggi</strong> Suku Boti. Kata ini berasal dari bahasa Dawan yang berarti "aturan yang harus dipatuhi". Halaika mengatur seluruh aspek kehidupan — dari cara bertani, membangun rumah, hingga berinteraksi dengan alam dan leluhur.</p>
+
+    <h3>🎯 Tiga Pilar Halaika</h3>
+    <ul style="margin-left:1.5rem;margin-bottom:1rem;">
+      <li><strong>Hubungan dengan Leluhur</strong> — menghormati arwah nenek moyang melalui ritual adat</li>
+      <li><strong>Hubungan dengan Alam</strong> — menjaga kelestarian hutan, tanah, dan air</li>
+      <li><strong>Hubungan dengan Sesama</strong> — hidup rukun, jujur, dan saling membantu</li>
+    </ul>
+
+    <h3>🚫 Larangan dalam Halaika</h3>
+    <ul style="margin-left:1.5rem;margin-bottom:1rem;">
+      <li>❌ Menggunakan listrik (dianggap merusak kesucian malam)</li>
+      <li>❌ Menggunakan pupuk kimia (dianggap meracuni tanah)</li>
+      <li>❌ Menebang pohon sembarangan</li>
+      <li>❌ Berbohong dan mencuri</li>
+    </ul>
+
+    <h3>💡 Makna Falsafah bagi Generasi Muda</h3>
+    <p>Falsafah Halaika mengajarkan kita untuk <strong>hidup sederhana, jujur, dan selaras dengan alam</strong>. Nilai-nilai ini relevan sepanjang zaman — bahkan di era modern seperti sekarang.</p>
+    <p>Dengan mempelajari Halaika, kita belajar menghargai kearifan lokal dan menjaga warisan budaya bangsa. 🌿</p>
+
+    <img src="Falsafah.jpg" alt="Suku Boti" style="width:32%;border-radius:8px;margin-top:1rem;">
+    <img src="Falsafah 2.jpg" alt="Suku Boti" style="width:32%;border-radius:8px;margin-top:1rem;">
+    <img src="Falsafah 1.jpg" alt="Suku Boti" style="width:32%;border-radius:8px;margin-top:1rem;">
+
+    <button class="btn-tts" data-teks="Falsafah Suku Boti. Setiap suku memiliki falsafah hidup yang menjadi pedoman. Bagi Suku Boti, pedoman itu bernama Halaika, aturan adat yang diwariskan turun-temurun sejak ratusan tahun silam. Halaika adalah hukum adat tertinggi Suku Boti. Kata ini berasal dari bahasa Dawan yang berarti aturan yang harus dipatuhi. Halaika mengatur seluruh aspek kehidupan. Tiga pilar Halaika: hubungan dengan leluhur, hubungan dengan alam, dan hubungan dengan sesama. Larangan dalam Halaika: menggunakan listrik, menggunakan pupuk kimia, menebang pohon sembarangan, berbohong dan mencuri. Falsafah Halaika mengajarkan kita untuk hidup sederhana, jujur, dan selaras dengan alam.">🔊 Bacakan</button>
+  </section>
+
+  <section id="galeri" class="node">
+    <h2>Galeri Motif Tenun</h2>
+    <p>Koleksi motif tenun ikat khas Suku Boti NTT:</p>
+    <div class="galeri-grid">
+      <figure>
+        <img src="Pakaian adat.jpg" alt="Motif tenun ikat Boti">
+        <figcaption>Suku Boti</figcaption>
+      </figure>
+      <figure>
+        <img src="Adat.jpg" alt="Motif Ikat Boti">
+        <figcaption>Motif Suku Boti</figcaption>
+      </figure>
+      <figure>
+        <img src="Pakaian Adat 3.jpg" alt="Tenun">
+        <figcaption>Tenun</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="audio" class="node">
+    <h2>Audio & Video Bahasa Lokal</h2>
+    <p>Dengarkan pelafalan bahasa daerah:</p>
+    <audio controls style="width:100%;margin-top:1rem;">
+      <source src="Tarian dan senandung lagu Suku Boti@xaverdako377.mp3" type="audio/mp3">
+      Browser Anda tidak mendukung elemen audio.
+    </audio>
+
+    <h3 style="color:#1a3a2a;margin-top:2.5rem;">🎬 Video Budaya Suku Boti</h3>
+    <p>Saksikan dokumentasi budaya Suku Boti dalam video berikut:</p>
+
+    <div style="margin-top:1rem;padding:2rem;background:#f9f9f4;border:2px dashed #d4a017;border-radius:8px;text-align:center;">
+      <p style="font-size:3rem;margin:0;">🎥</p>
+      <p style="font-size:1.2rem;margin:0.5rem 0 1rem 0;">
+        Video dokumentasi budaya Suku Boti
+      </p>
+      <a href="https://youtu.be/4Ht8xfTrVqw?si=d06o48KKUtZsTZkT" target="_blank" rel="noopener noreferrer"
+         style="display:inline-block;background:#d32f2f;color:#fff;padding:14px 28px;border-radius:6px;text-decoration:none;font-weight:bold;font-size:1rem;">
+        ▶️ Tonton di YouTube
+      </a>
+      <p style="margin-top:1rem;font-size:0.9rem;color:#666;">
+        Video akan terbuka di tab baru
+      </p>
+    </div>
+
+    <div style="margin-top:1rem;padding:1rem;background:#e8f0e8;border-radius:8px;border-left:4px solid #d4a017;">
+      <p style="margin:0;font-size:16px;">
+        <strong>💡 Info:</strong> Video ini menampilkan dokumentasi kehidupan, tarian, dan tradisi Suku Boti di Timor Tengah Selatan. 
+        Sumber: YouTube.
+      </p>
+    </div>
+  </section>
+
+
+  <section id="laporan" class="node">
+    <h2>📄 Laporan Budaya Suku Boti</h2>
+    <p>Dokumen laporan komprehensif mengenai kebudayaan Nusa Tenggara Timur dengan studi kasus kearifan lokal dan tata cara hidup Suku Boti.</p>
+
+    <div class="laporan-actions">
+      <a class="btn-laporan" href="Laporan-Budaya-Suku-Boti.pdf" target="_blank" rel="noopener noreferrer">
+        ↗️ Buka PDF di Tab Baru
+      </a>
+      <a class="btn-laporan btn-laporan-outline" href="Laporan-Budaya-Suku-Boti.pdf" download>
+        ⬇️ Unduh PDF
+      </a>
+    </div>
+
+    <div class="pdf-viewer" aria-label="Pratinjau laporan PDF">
+      <iframe
+        src="Laporan-Budaya-Suku-Boti.pdf#view=FitH"
+        title="Laporan Komprehensif Kebudayaan Nusa Tenggara Timur - Studi Kasus Suku Boti"
+        loading="lazy">
+      </iframe>
+    </div>
+
+    <p class="pdf-fallback">
+      Jika PDF tidak tampil di browser, gunakan tombol <strong>Buka PDF di Tab Baru</strong> atau <strong>Unduh PDF</strong> di atas.
+    </p>
+  </section>
+
+  <section id="peta" class="node">
+    <h2>Peta Interaktif</h2>
+
+    <h3 style="color:#1a3a2a;margin-top:2.5rem;">📍 Lokasi Suku Boti di NTT</h3>
+    <p>Desa Boti terletak di Kecamatan Kie, Kabupaten Timor Tengah Selatan, Nusa Tenggara Timur — sekitar 40 km dari Kota SoE.</p>
+
+    <iframe 
+      src="https://www.google.com/maps?q=Boti,+Timor+Tengah+Selatan,+NTT&output=embed&z=11" 
+      width="100%" 
+      height="450" 
+      style="border:0;border-radius:8px;margin-top:1rem;box-shadow:0 2px 8px rgba(0,0,0,0.1);" 
+      allowfullscreen="" 
+      loading="lazy">
+    </iframe>
+
+    <div style="margin-top:1rem;padding:1rem;background:#e8f0e8;border-radius:8px;border-left:4px solid #d4a017;">
+      <p style="margin:0;font-size:16px;">
+        <strong>🏠 Tentang Lokasi:</strong> Suku Boti mendiami Desa Boti, Kecamatan Kie, Kabupaten Timor Tengah Selatan. 
+        Dari Kota SoE (ibu kota kabupaten), desa ini berjarak sekitar 40 km dan bisa ditempuh dengan kendaraan darat sekitar 1 jam.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<aside class="sitemap">
+  <h3>🔗 Peta Situs</h3>
+  <ul>
+    <li><a href="#beranda">🏠 Beranda</a></li>
+    <li><a href="#profil">👤 Profil</a></li>
+    <li><a href="#falsafah">📜 Falsafah</a></li>
+    <li><a href="#galeri">🎨 Galeri Motif</a></li>
+    <li><a href="#audio">🔊 Audio Bahasa</a></li>
+    <li><a href="#peta">🗺️ Peta Interaktif</a></li>
+    <li><a href="#laporan">📄 Laporan</a></li>
+  </ul>
+</aside>
+
+<footer>
+  <p>&copy; 2026 Kelompok 3 — Proyek Mini OBE</p>
+</footer>
+
+<button id="backToTop" aria-label="Kembali ke atas">⬆️</button>
+
+<script>
+// ============================================
+// 1. NAVIGASI NON-LINIER
+// ============================================
+const nodes = document.querySelectorAll('.node');
+const breadcrumbList = document.getElementById('breadcrumb-list');
+
+const LABEL_MAP = {
+  beranda: 'Beranda', profil: 'Profil', falsafah: 'Falsafah',
+  galeri: 'Galeri Motif', audio: 'Audio Bahasa', peta: 'Peta Interaktif'
+};
+
+function navigasiKe(id) {
+  nodes.forEach(n => n.classList.remove('active'));
+  const target = document.getElementById(id);
+  if (target) {
+    target.classList.add('active');
+    perbaruiBreadcrumb(id);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
+
+function perbaruiBreadcrumb(id) {
+  if (!breadcrumbList) return;
+  breadcrumbList.innerHTML = '';
+  const berandaLi = document.createElement('li');
+  berandaLi.innerHTML = '<a href="#beranda">Beranda</a>';
+  breadcrumbList.appendChild(berandaLi);
+  if (id !== 'beranda') {
+    const li = document.createElement('li');
+    li.textContent = LABEL_MAP[id] || id;
+    breadcrumbList.appendChild(li);
+  }
+}
+
+window.addEventListener('hashchange', () => {
+  const id = location.hash.replace('#', '') || 'beranda';
+  navigasiKe(id);
+});
+
+// ============================================
+// 2. TTS
+// ============================================
+let ttsSedangJalan = false;
+let tombolAktif = null;
+
+function bacakanTeks(teks, tombol) {
+  if (!('speechSynthesis' in window)) {
+    alert('Browser tidak mendukung TTS.');
+    return;
+  }
+
+  if (ttsSedangJalan) {
+    speechSynthesis.cancel();
+    resetTombol();
+    return;
+  }
+
+  speechSynthesis.cancel();
+
+  const voices = speechSynthesis.getVoices();
+  const voiceID = voices.find(v => v.lang === 'id-ID')
+               || voices.find(v => v.lang && v.lang.startsWith('id'))
+               || voices.find(v => v.name && v.name.toLowerCase().includes('indonesia'));
+
+  if (!voiceID) {
+    alert('Voice Indonesia belum terinstall.');
+    return;
+  }
+
+  console.log('✅ Voice dipakai:', voiceID.name, '|', voiceID.lang);
+
+  const ucap = new SpeechSynthesisUtterance(teks);
+  ucap.voice = voiceID;
+  ucap.lang = 'id-ID';
+  ucap.rate = 0.85;
+  ucap.pitch = 1;
+  ucap.volume = 1;
+
+  ttsSedangJalan = true;
+  tombolAktif = tombol;
+  if (tombol) {
+    tombol.dataset.teksAsli = tombol.textContent;
+    tombol.textContent = '⏹️ Stop';
+    tombol.classList.add('sedang-bicara');
+  }
+
+  ucap.onend = () => { console.log('✅ Selesai'); resetTombol(); };
+  ucap.onerror = (e) => {
+    if (e.error !== 'interrupted') console.error('❌ TTS Error:', e.error);
+    resetTombol();
+  };
+
+  speechSynthesis.speak(ucap);
+}
+
+function resetTombol() {
+  ttsSedangJalan = false;
+  if (tombolAktif) {
+    tombolAktif.textContent = tombolAktif.dataset.teksAsli || '🔊 Bacakan';
+    tombolAktif.classList.remove('sedang-bicara');
+    tombolAktif = null;
+  }
+}
+
+document.addEventListener('click', (e) => {
+  const btn = e.target.closest('.btn-tts');
+  if (btn) {
+    e.preventDefault();
+    const teks = btn.dataset.teks;
+    if (!teks) { alert('Tidak ada teks.'); return; }
+    bacakanTeks(teks, btn);
+  }
+});
+
+// ============================================
+// 3. GRAF HYPERMEDIA
+// ============================================
+function gambarGraf(containerId) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+
+  const graphData = {
+    nodes: [
+      { id: 'beranda', label: 'Beranda', x: 400, y: 100 },
+      { id: 'profil', label: 'Profil', x: 150, y: 300 },
+      { id: 'falsafah', label: 'Falsafah', x: 350, y: 300 },
+      { id: 'galeri', label: 'Galeri', x: 550, y: 300 },
+      { id: 'audio', label: 'Audio', x: 250, y: 500 },
+      { id: 'peta', label: 'Peta', x: 500, y: 500 }
+    ],
+    edges: [
+      { from: 'beranda', to: 'profil' }, { from: 'beranda', to: 'falsafah' },
+      { from: 'beranda', to: 'galeri' }, { from: 'beranda', to: 'audio' },
+      { from: 'beranda', to: 'peta' }, { from: 'profil', to: 'falsafah' },
+      { from: 'falsafah', to: 'galeri' }, { from: 'galeri', to: 'audio' },
+      { from: 'audio', to: 'peta' }, { from: 'peta', to: 'beranda' }
+    ]
+  };
+
+  const svgNS = 'http://www.w3.org/2000/svg';
+  const svg = document.createElementNS(svgNS, 'svg');
+  svg.setAttribute('viewBox', '0 0 800 650');
+  svg.setAttribute('width', '100%');
+  svg.style.background = '#f9f9f4';
+  svg.style.borderRadius = '12px';
+
+  const defs = document.createElementNS(svgNS, 'defs');
+  defs.innerHTML = '<marker id="arrow" markerWidth="10" markerHeight="10" refX="20" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#1a3a2a"/></marker>';
+  svg.appendChild(defs);
+
+  graphData.edges.forEach(edge => {
+    const from = graphData.nodes.find(n => n.id === edge.from);
+    const to = graphData.nodes.find(n => n.id === edge.to);
+    const line = document.createElementNS(svgNS, 'line');
+    line.setAttribute('x1', from.x);
+    line.setAttribute('y1', from.y);
+    line.setAttribute('x2', to.x);
+    line.setAttribute('y2', to.y);
+    line.setAttribute('stroke', '#1a3a2a');
+    line.setAttribute('stroke-width', '2');
+    line.setAttribute('marker-end', 'url(#arrow)');
+    svg.appendChild(line);
+  });
+
+  graphData.nodes.forEach(node => {
+    const circle = document.createElementNS(svgNS, 'circle');
+    circle.setAttribute('cx', node.x);
+    circle.setAttribute('cy', node.y);
+    circle.setAttribute('r', 45);
+    circle.setAttribute('fill', '#d4a017');
+    circle.setAttribute('stroke', '#1a3a2a');
+    circle.setAttribute('stroke-width', '3');
+    svg.appendChild(circle);
+
+    const text = document.createElementNS(svgNS, 'text');
+    text.setAttribute('x', node.x);
+    text.setAttribute('y', node.y + 5);
+    text.setAttribute('text-anchor', 'middle');
+    text.setAttribute('font-size', '13');
+    text.setAttribute('font-weight', 'bold');
+    text.setAttribute('fill', '#000');
+    text.textContent = node.label;
+    svg.appendChild(text);
+  });
+
+  container.innerHTML = '';
+  container.appendChild(svg);
+}
+
+// ============================================
+// 4. DARK MODE
+// ============================================
+const btnDark = document.getElementById('btnDark');
+
+function setTheme(theme) {
+  if (theme === 'dark') {
+    document.body.classList.add('dark-mode');
+    btnDark.textContent = '☀️';
+  } else {
+    document.body.classList.remove('dark-mode');
+    btnDark.textContent = '🌙';
+  }
+  localStorage.setItem('theme', theme);
+}
+
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme === 'dark') setTheme('dark');
+
+if (btnDark) {
+  btnDark.addEventListener('click', () => {
+    const isDark = document.body.classList.contains('dark-mode');
+    setTheme(isDark ? 'light' : 'dark');
+  });
+}
+
+// ============================================
+// 5. MOBILE MENU
+// ============================================
+const btnHamburger = document.getElementById('btnHamburger');
+const navMenu = document.getElementById('navMenu');
+const menuOverlay = document.getElementById('menuOverlay');
+
+function toggleMenu() {
+  navMenu.classList.toggle('open');
+  menuOverlay.classList.toggle('active');
+  btnHamburger.textContent = navMenu.classList.contains('open') ? '✕' : '☰';
+}
+
+if (btnHamburger) {
+  btnHamburger.addEventListener('click', toggleMenu);
+  menuOverlay.addEventListener('click', toggleMenu);
+  navMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      if (navMenu.classList.contains('open')) toggleMenu();
+    });
+  });
+}
+
+// ============================================
+// 6. PARTICLE BACKGROUND
+// ============================================
+const canvas = document.getElementById('particles');
+if (canvas) {
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  let w, h;
+
+  function resize() {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  function createParticle() {
+    return {
+      x: Math.random() * w,
+      y: Math.random() * h,
+      size: Math.random() * 2.5 + 0.5,
+      speedX: (Math.random() - 0.5) * 0.4,
+      speedY: (Math.random() - 0.5) * 0.4,
+      opacity: Math.random() * 0.5 + 0.2
+    };
+  }
+
+  for (let i = 0; i < 50; i++) particles.push(createParticle());
+
+  function animateParticles() {
+    ctx.clearRect(0, 0, w, h);
+    particles.forEach((p, i) => {
+      p.x += p.speedX;
+      p.y += p.speedY;
+
+      if (p.x < 0 || p.x > w) p.speedX *= -1;
+      if (p.y < 0 || p.y > h) p.speedY *= -1;
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(212, 160, 23, ${p.opacity})`;
+      ctx.fill();
+
+      particles.slice(i + 1).forEach(p2 => {
+        const dx = p.x - p2.x;
+        const dy = p.y - p2.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 120) {
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(p2.x, p2.y);
+          ctx.strokeStyle = `rgba(212, 160, 23, ${0.15 * (1 - dist / 120)})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      });
+    });
+    requestAnimationFrame(animateParticles);
+  }
+  animateParticles();
+}
+
+// ============================================
+// 7. BACK TO TOP
+// ============================================
+const backToTop = document.getElementById('backToTop');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 400) {
+    backToTop.classList.add('show');
+  } else {
+    backToTop.classList.remove('show');
+  }
+});
+
+if (backToTop) {
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
+// ============================================
+// 8. SCROLL PROGRESS BAR
+// ============================================
+const progressBar = document.getElementById('progressBar');
+
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = (scrollTop / docHeight) * 100;
+  progressBar.style.width = progress + '%';
+});
+
+// ============================================
+// 9. LOADING SCREEN
+// ============================================
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('loader').classList.add('hidden');
+  }, 800);
+});
+
+// ============================================
+// 10. INISIALISASI
+// ============================================
+window.addEventListener('DOMContentLoaded', () => {
+  const id = location.hash.replace('#', '') || 'beranda';
+  navigasiKe(id);
+  gambarGraf('peta-container');
+
+  if ('speechSynthesis' in window) {
+    speechSynthesis.getVoices();
+    speechSynthesis.onvoiceschanged = () => {
+      const v = speechSynthesis.getVoices();
+      const id = v.find(x => x.lang === 'id-ID');
+      if (id) console.log('🇮🇩 Voice Indonesia siap:', id.name);
+    };
+  }
+});
+</script>
+
+</body>
+</html>
